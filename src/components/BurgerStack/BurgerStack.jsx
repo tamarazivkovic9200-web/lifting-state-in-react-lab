@@ -1,24 +1,30 @@
-// src/components/BurgerStack/BurgerStack.jsx
+import Ingredient from '../Ingredient/Ingredient.jsx';
 
-const BurgerStack = ({ ingredients, onRemove }) => {
+const BurgerStack = ({ ingredients = [], onRemove }) => {
   return (
     <ul aria-label="Burger stack">
-      {ingredients.map((ingredient, idx) => (
+      {ingredients.length === 0 ? (
         <li
-          key={`${ingredient.name}-${idx}`}
-          style={{ backgroundColor: ingredient.color }}
-          title={`${ingredient.name} (stack item #${idx + 1})`}
+          style={{
+            backgroundColor: '#555',
+            textAlign: 'center',
+            fontStyle: 'italic',
+            opacity: 0.7,
+          }}
         >
-          <span>{ingredient.name}</span>
-          <button
-            type="button"
-            aria-label={`Remove ${ingredient.name} at position ${idx + 1}`}
-            onClick={() => onRemove(idx)}
-          >
-            X
-          </button>
+          No Ingredients
         </li>
-      ))}
+      ) : (
+        ingredients.map((ingredient, idx) => (
+          <Ingredient
+            key={`${ingredient.name}-${idx}`}
+            ingredient={ingredient}
+            index={idx}
+            onRemove={onRemove}
+            isStack={true}
+          />
+        ))
+      )}
     </ul>
   );
 };

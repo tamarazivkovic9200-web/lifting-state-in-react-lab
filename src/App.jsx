@@ -36,18 +36,12 @@ const App = () => {
 };
   return (
     <main>
-      <h1>Burger Stacker</h1>
+      <h1>Burger Stacker 🍔</h1>
       <section>
-     <IngredientList 
-       ingredients={availableIngredients} 
-       onAdd={addToBurger} 
-      />
-
-    <BurgerStack 
-      ingredients={stack} 
-      onRemove={removeFromBurger} 
-     />
-     
+        <IngredientList ingredients={availableIngredients} 
+        onAdd={addToBurger} />
+        
+        <BurgerStack ingredients={stack} onRemove={removeFromBurger} />
       </section>
     </main>
   );

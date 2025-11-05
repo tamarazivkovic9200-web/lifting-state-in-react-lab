@@ -1,23 +1,16 @@
-// src/components/IngredientList/IngredientList.jsx
+import Ingredient from '../Ingredient/Ingredient.jsx';
 
-const IngredientList = ({ ingredients, onAdd }) => {
+const IngredientList = ({ ingredients = [], onAdd }) => {
   return (
     <ul aria-label="Available ingredients">
       {ingredients.map((ingredient, idx) => (
-        <li
+        <Ingredient
           key={`${ingredient.name}-${idx}`}
-          style={{ backgroundColor: ingredient.color }}
-          title={ingredient.name}
-        >
-          <span>{ingredient.name}</span>
-          <button
-            type="button"
-            aria-label={`Add ${ingredient.name}`}
-            onClick={() => onAdd(ingredient)}
-          >
-            +
-          </button>
-        </li>
+          ingredient={ingredient}
+          index={idx}
+          onAdd={onAdd}
+          isStack={false}
+        />
       ))}
     </ul>
   );
